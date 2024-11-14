@@ -10,9 +10,14 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExcelController {
+public class ExcelFile {
 
-    FileInputStream fileInputStream = null;
+    FileInputStream fileInputStream ;
+    private Sheet sheet;
+
+    public ExcelFile(String filepath){
+        sheet=open(filepath);
+    }
 
     public Sheet open(String filepath){
         try {
@@ -34,14 +39,14 @@ public class ExcelController {
     }
 
     public void test(String filepath) {
-        Row row = open(filepath).getRow(0);
+        Row row = sheet.getRow(0);
         Cell cell = row.getCell(0);
         System.out.println(cell);
     }
 
-    public List<String> getFirstRowValues(String filepath) {
+    public List<String> getFirstRowValues() {
         List<String> rowValues = new ArrayList<>();
-        Row row = open(filepath).getRow(0);
+        Row row = sheet.getRow(0);
         for (Cell cell : row) {
             switch (cell.getCellType()) {
                 case STRING:
@@ -57,8 +62,8 @@ public class ExcelController {
         }
         return rowValues;
     }
-    public Cell getcell(int rowIndex ,int columnIndex,String filepath) {
-        Row row = open(filepath).getRow(rowIndex);
+    public Cell getcell(int rowIndex ,int columnIndex) {
+        Row row = sheet.getRow(rowIndex);
         return row.getCell(columnIndex);
     }
     public String removeInvisibleCharacters(String input) {
