@@ -20,6 +20,7 @@ public class ExcelFile {
     }
 
     public Sheet open(String filepath){
+        filepath="src/main/resources/"+filepath;
         try {
             fileInputStream = new FileInputStream(new File(filepath));
         } catch (FileNotFoundException e) {

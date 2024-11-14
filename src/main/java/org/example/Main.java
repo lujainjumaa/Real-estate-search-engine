@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         SearchFrame searchFrame = new SearchFrame();
         searchFrame.setVisible(true);
-        ExcelFile controller = new ExcelFile("src/main/resources/"+"Data.xlsx");
+        ExcelFile controller = new ExcelFile("Data.xlsx");
         controller.test("src/main/resources/"+"Data.xlsx");
         List<String> firstRowValues = controller.getFirstRowValues();
 
