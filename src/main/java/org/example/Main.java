@@ -4,10 +4,10 @@ import java.io.FileNotFoundException;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) {
         SearchFrame searchFrame = new SearchFrame();
         searchFrame.setVisible(true);
-        ExelController controller = new ExelController();
+        ExcelController controller = new ExcelController();
         controller.test("src/main/resources/Data.xlsx");
         List<String> firstRowValues = controller.getFirstRowValues("src/main/resources/Data.xlsx");
 

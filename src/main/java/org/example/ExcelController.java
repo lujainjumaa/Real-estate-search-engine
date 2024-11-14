@@ -10,12 +10,16 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExelController {
+public class ExcelController {
 
     FileInputStream fileInputStream = null;
 
-    public Sheet open(String filepath) throws FileNotFoundException {
-        fileInputStream = new FileInputStream(new File(filepath));
+    public Sheet open(String filepath){
+        try {
+            fileInputStream = new FileInputStream(new File(filepath));
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         try {
             Workbook workbook = new XSSFWorkbook(fileInputStream);
             Sheet sheet = workbook.getSheetAt(0);
@@ -25,16 +29,17 @@ public class ExelController {
             System.out.println("Error opening the file: " + e.getMessage());
 
         }
+
         return null;
     }
 
-    public void test(String filepath) throws FileNotFoundException {
+    public void test(String filepath) {
         Row row = open(filepath).getRow(0);
         Cell cell = row.getCell(0);
         System.out.println(cell);
     }
 
-    public List<String> getFirstRowValues(String filepath) throws FileNotFoundException {
+    public List<String> getFirstRowValues(String filepath) {
         List<String> rowValues = new ArrayList<>();
         Row row = open(filepath).getRow(0);
         for (Cell cell : row) {
@@ -52,7 +57,7 @@ public class ExelController {
         }
         return rowValues;
     }
-    public Cell getcell(int rowIndex ,int columnIndex,String filepath) throws FileNotFoundException {
+    public Cell getcell(int rowIndex ,int columnIndex,String filepath) {
         Row row = open(filepath).getRow(rowIndex);
         return row.getCell(columnIndex);
     }
