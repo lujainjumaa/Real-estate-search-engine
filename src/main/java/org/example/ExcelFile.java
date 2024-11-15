@@ -14,9 +14,12 @@ public class ExcelFile {
 
     FileInputStream fileInputStream ;
     private Sheet sheet;
+    String[] firstRowValues;
 
     public ExcelFile(String filepath){
         sheet=open(filepath);
+        firstRowValues = getFirstRowValues().toArray(new String[0]);
+
     }
 
     public Sheet open(String filepath){
@@ -70,4 +73,5 @@ public class ExcelFile {
     public String removeInvisibleCharacters(String input) {
         return input.replaceAll("[\\p{C}\\p{Z}\\u00A0\\u200E\\u200F\\u202A\\u202B\\u202C\\u202D\\u202E\\uFEFF]", "").trim();
     }
+
 }

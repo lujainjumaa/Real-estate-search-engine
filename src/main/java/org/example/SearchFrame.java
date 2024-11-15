@@ -10,9 +10,10 @@ public class SearchFrame extends JFrame {
     private JComboBox<String> keyDropdown;
     private JButton searchButton;
 
-    public SearchFrame(String[] firstRowValuesArray) {
+    public SearchFrame() {
+        ExcelFile file=new ExcelFile("Data.xlsx");
         setTitle("Search Frame");
-        setSize(300, 200);
+        setSize(500, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new FlowLayout());
 
@@ -20,7 +21,7 @@ public class SearchFrame extends JFrame {
         add(new JLabel("Value:"));
         add(valueTextField);
 
-        String[] keys = firstRowValuesArray;
+        String[] keys =  file.getFirstRowValues().toArray(new String[0]);
         keyDropdown = new JComboBox<>(keys);
         add(new JLabel("Key:"));
         add(keyDropdown);
