@@ -10,7 +10,7 @@ public class SearchFrame extends JFrame {
     private JComboBox<String> keyDropdown;
     private JButton searchButton;
 
-    public SearchFrame() {
+    public SearchFrame(String[] firstRowValuesArray) {
         setTitle("Search Frame");
         setSize(300, 200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -20,7 +20,7 @@ public class SearchFrame extends JFrame {
         add(new JLabel("Value:"));
         add(valueTextField);
 
-        String[] keys = { "Name", "Age" };
+        String[] keys = firstRowValuesArray;
         keyDropdown = new JComboBox<>(keys);
         add(new JLabel("Key:"));
         add(keyDropdown);
