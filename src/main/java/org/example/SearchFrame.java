@@ -4,14 +4,20 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SearchFrame extends JFrame {
     private JTextField valueTextField;
     private JComboBox<String> keyDropdown;
     private JButton searchButton;
+    List<HomeProperty> properties = new ArrayList<>();
 
     public SearchFrame() {
         ExcelFile file=new ExcelFile("Data.xlsx");
+        properties=file.getPropertiesFromSheet();
+        System.out.println(properties.get(0).getTheOwner());
+        System.out.println(properties.get(0).getPrice());
         setTitle("Search Frame");
         setSize(500, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

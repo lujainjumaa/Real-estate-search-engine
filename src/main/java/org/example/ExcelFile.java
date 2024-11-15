@@ -12,18 +12,18 @@ import java.util.List;
 
 public class ExcelFile {
 
-    FileInputStream fileInputStream ;
+    FileInputStream fileInputStream;
     private Sheet sheet;
     String[] firstRowValues;
 
-    public ExcelFile(String filepath){
-        sheet=open(filepath);
+    public ExcelFile(String filepath) {
+        sheet = open(filepath);
         firstRowValues = getFirstRowValues().toArray(new String[0]);
 
     }
 
-    public Sheet open(String filepath){
-        filepath="src/main/resources/"+filepath;
+    public Sheet open(String filepath) {
+        filepath = "src/main/resources/" + filepath;
         try {
             fileInputStream = new FileInputStream(new File(filepath));
         } catch (FileNotFoundException e) {
@@ -66,12 +66,58 @@ public class ExcelFile {
         }
         return rowValues;
     }
-    public Cell getcell(int rowIndex ,int columnIndex) {
+
+    public Cell getcell(int rowIndex, int columnIndex) {
         Row row = sheet.getRow(rowIndex);
         return row.getCell(columnIndex);
     }
+
     public String removeInvisibleCharacters(String input) {
         return input.replaceAll("[\\p{C}\\p{Z}\\u00A0\\u200E\\u200F\\u202A\\u202B\\u202C\\u202D\\u202E\\uFEFF]", "").trim();
     }
 
+    public List<HomeProperty> getPropertiesFromSheet() {
+        List<HomeProperty> properties = new ArrayList<>();
+
+        for (int rowIndex = 1; rowIndex <= sheet.getLastRowNum(); rowIndex++) {
+            Row row = sheet.getRow(rowIndex);
+
+            String theOwner = getCellValueAsString(row.getCell(0));
+            int id = (int) getCellValueAsNumeric(row.getCell(1)); // Updated to handle numeric safely
+            String moreInfo = getCellValueAsString(row.getCell(2));
+            String governorate = getCellValueAsString(row.getCell(3));
+            long price = (long) getCellValueAsNumeric(row.getCell(4)); // Updated
+            int propertyArea = (int) getCellValueAsNumeric(row.getCell(5)); // Updated
+            String realStateArea = getCellValueAsString(row.getCell(6));
+            int a = (int) getCellValueAsNumeric(row.getCell(7)); // Updated
+
+
+
+            HomeProperty property = new HomeProperty(theOwner, 0, moreInfo, governorate, 0, 0, realStateArea, 0);
+            properties.add(property);
+        }
+
+        return properties;
+    }
+
+    private String getCellValueAsString(Cell cell) {
+        switch (cell.getCellType()) {
+            case STRING:
+                return cell.getStringCellValue();
+            case NUMERIC:
+                return String.valueOf(cell.getNumericCellValue());
+            default:
+                return "";
+        }
+    }
+
+    private double getCellValueAsNumeric(Cell cell) {
+        if (cell == null) return 0;
+        switch (cell.getCellType()) {
+            case NUMERIC:
+                return cell.getNumericCellValue();
+            default:
+                return 0;
+        }
+    }
 }
