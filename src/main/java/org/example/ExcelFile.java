@@ -82,18 +82,18 @@ public class ExcelFile {
         for (int rowIndex = 1; rowIndex <= sheet.getLastRowNum(); rowIndex++) {
             Row row = sheet.getRow(rowIndex);
 
-            String theOwner = getCellValueAsString(row.getCell(0));
-            int id = (int) getCellValueAsNumeric(row.getCell(1)); // Updated to handle numeric safely
-            String moreInfo = getCellValueAsString(row.getCell(2));
-            String governorate = getCellValueAsString(row.getCell(3));
-            long price = (long) getCellValueAsNumeric(row.getCell(4)); // Updated
-            int propertyArea = (int) getCellValueAsNumeric(row.getCell(5)); // Updated
-            String realStateArea = getCellValueAsString(row.getCell(6));
-            int a = (int) getCellValueAsNumeric(row.getCell(7)); // Updated
+            String theOwner = getCellValueAsString(row.getCell(1));
+            int id = (int) getCellValueAsNumeric(row.getCell(0)); // Updated to handle numeric safely
+            String moreInfo = getCellValueAsString(row.getCell(4));
+            String governorate = getCellValueAsString(row.getCell(2));
+            long price = (long) getCellValueAsNumeric(row.getCell(5)); // Updated
+            int propertyArea = (int) getCellValueAsNumeric(row.getCell(3)); // Updated
+            String realStateArea = getCellValueAsString(row.getCell(7));
+            int a = (int) getCellValueAsNumeric(row.getCell(6)); // Updated
 
 
 
-            HomeProperty property = new HomeProperty(theOwner, 0, moreInfo, governorate, 0, 0, realStateArea, 0);
+            HomeProperty property = new HomeProperty(theOwner, id, moreInfo, governorate, price, propertyArea, realStateArea, a);
             properties.add(property);
         }
 

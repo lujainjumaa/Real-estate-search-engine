@@ -4,7 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class TestSecFrame extends JFrame {
-    public TestSecFrame(String key, String value) {
+    public TestSecFrame(int key, String value ,String[] keys) {
+
         setTitle("Result Frame");
         setSize(300, 150);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

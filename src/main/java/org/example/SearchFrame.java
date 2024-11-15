@@ -16,8 +16,14 @@ public class SearchFrame extends JFrame {
     public SearchFrame() {
         ExcelFile file=new ExcelFile("Data.xlsx");
         properties=file.getPropertiesFromSheet();
-        System.out.println(properties.get(0).getTheOwner());
-        System.out.println(properties.get(0).getPrice());
+        System.out.println("owner "+properties.get(0).getTheOwner());
+        System.out.println("gov "+properties.get(0).getGovernorate());
+        System.out.println("more "+properties.get(0).getMoreInfo());
+        System.out.println("A "+properties.get(0).getA());
+        System.out.println("id "+properties.get(0).getId());
+        System.out.println("price "+properties.get(0).getPrice());
+        System.out.println("RealStateArea "+properties.get(0).getRealStateArea());
+
         setTitle("Search Frame");
         setSize(500, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -38,10 +44,16 @@ public class SearchFrame extends JFrame {
         searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                int columnIndex = 0;
                 String selectedKey = (String) keyDropdown.getSelectedItem();
                 String enteredValue = valueTextField.getText();
-
-                TestSecFrame testSecFrame = new TestSecFrame(selectedKey, enteredValue);
+                for (int i = 0; i < keys.length; i++) {
+                    if (keys[i].equals(selectedKey)) {
+                        columnIndex = i; 
+                        break;
+                    }
+                }
+                TestSecFrame testSecFrame = new TestSecFrame(columnIndex, enteredValue, keys);
                 testSecFrame.setVisible(true);
             }
         });
