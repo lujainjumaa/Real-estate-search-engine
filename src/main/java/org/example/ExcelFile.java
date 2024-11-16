@@ -74,7 +74,14 @@ public class ExcelFile {
         return input.replaceAll("[\\p{C}\\p{Z}\\u00A0\\u200E\\u200F\\u202A\\u202B\\u202C\\u202D\\u202E\\uFEFF]", "").trim();
     }
 
-
-
+    public List<String> getRowAsStrings(int index) {
+        List<String> rowValuesAsString = new ArrayList<>();
+        Row row = sheet.getRow(index);
+        for (Cell cell : row) {
+            String out = removeInvisibleCharacters(cell.toString());
+            rowValuesAsString.add(out);
+        }
+        return rowValuesAsString;
+    }
 
 }

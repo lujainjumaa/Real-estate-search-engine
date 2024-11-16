@@ -14,8 +14,7 @@ public class SearchFrame extends JFrame {
 
     public SearchFrame() {
         ExcelFile file=new ExcelFile("Data.xlsx");
-        HomeProperties.load();
-        System.out.println(HomeProperties.properties.get(0).getTheOwner());
+
         setTitle("Search Frame");
         setSize(500, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
