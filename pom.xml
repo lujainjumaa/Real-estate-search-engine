@@ -43,14 +43,6 @@
             </plugin>
 
             <!-- Maven Exec Plugin to run the main class -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-exec-plugin</artifactId>
-                <version>3.1.0</version> <!-- Use the latest stable version -->
-                <configuration>
-                    <mainClass>org.example.Main</mainClass> <!-- Fully qualified class name -->
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 

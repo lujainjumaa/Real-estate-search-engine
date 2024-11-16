@@ -2,10 +2,19 @@ package org.example;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TestSecFrame extends JFrame {
-    public TestSecFrame(int key, String value ,String[] keys) {
+    int indexkey;
+    String value;
+    List<HomeProperties> properties = new ArrayList<HomeProperties>();
 
+    public TestSecFrame(int key, String value) {
+
+        this.indexkey=key;
+        this.value=value;
+        this.properties=properties;
         setTitle("Result Frame");
         setSize(300, 150);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -15,4 +24,7 @@ public class TestSecFrame extends JFrame {
         JLabel resultLabel = new JLabel("Key: " + key + ", Value: " + value);
         add(resultLabel);
     }
+
+
+
 }
