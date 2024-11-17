@@ -8,9 +8,9 @@ public class HomeProperty {
     private String governorate;
     private int propertyArea;
     private String realStateArea;
-    private int a;
+    private int RealEstateYield;
 
-    public HomeProperty(String theOwner, int id, String moreInfo, String governorate, long price, int propertyArea, String realStateArea, int a) {
+    public HomeProperty(String theOwner, int id, String moreInfo, String governorate, long price, int propertyArea, String realStateArea, int realEstateYield) {
         this.theOwner = theOwner;
         this.id = id;
         this.moreInfo = moreInfo;
@@ -18,7 +18,7 @@ public class HomeProperty {
         this.price = price;
         this.propertyArea = propertyArea;
         this.realStateArea = realStateArea;
-        this.a = a;
+        this.RealEstateYield = realEstateYield;
     }
 
 
@@ -50,7 +50,7 @@ public class HomeProperty {
         return realStateArea;
     }
 
-    public int getA() {
-        return a;
+    public int getRealEstateYield() {
+        return RealEstateYield;
     }
 }
