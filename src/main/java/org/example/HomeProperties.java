@@ -23,12 +23,12 @@ public class HomeProperties {
             int id =  turn.turnToInt(getsheet.getRowAsStrings(rowIndex).get(0));
             String moreInfo = getsheet.getRowAsStrings(rowIndex).get(4);
             String governorate = getsheet.getRowAsStrings(rowIndex).get(2);
-            long price = turn.turnToLong(getsheet.getRowAsStrings(rowIndex).get(6));
+            long price = turn.turnToLong(getsheet.getRowAsStrings(rowIndex).get(5));
             int propertyArea =turn.turnToInt(getsheet.getRowAsStrings(rowIndex).get(3));
             String realStateArea = getsheet.getRowAsStrings(rowIndex).get(7);
-            int a = turn.turnToInt(getsheet.getRowAsStrings(rowIndex).get(6));
+            int RealEstateYield = turn.turnToInt(getsheet.getRowAsStrings(rowIndex).get(6));
 
-            HomeProperty property = new HomeProperty(theOwner, id, moreInfo, governorate, price, propertyArea, realStateArea, a);
+            HomeProperty property = new HomeProperty(theOwner, id, moreInfo, governorate, price, propertyArea, realStateArea, RealEstateYield);
             properties.add(property);
         }
     }

@@ -53,4 +53,31 @@ public class HomeProperty {
     public int getRealEstateYield() {
         return RealEstateYield;
     }
+
+    public int sendKeyInt(int key){
+        if(key==0)
+            return getId();
+        else if(key==3)
+            return getPropertyArea();
+        else if(key==6)
+            return getRealEstateYield();
+        return 0;
+    }
+    public String senKeyString(int key){
+        if(key==1)
+            return getTheOwner();
+        else if(key==2)
+            return getGovernorate();
+        else if(key==4)
+            return getMoreInfo();
+        else if(key==7)
+            return getRealStateArea();
+        return "";
+    }
+    public long senKeyLong(int key){
+        if(key==5)
+            return getPrice();
+        return 0;
+    }
+
 }
