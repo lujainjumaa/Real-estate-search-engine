@@ -1,11 +1,12 @@
-package org.example;
+package org.example.Frames;
+
+import org.example.Models.ExcelFile;
+import org.example.SearchController;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 
 public class SearchFrame extends JFrame {
     private JTextField valueTextField;
@@ -44,8 +45,9 @@ public class SearchFrame extends JFrame {
                         break;
                     }
                 }
-                TestSecFrame testSecFrame = new TestSecFrame(columnIndex, enteredValue);
-                testSecFrame.setVisible(true);
+//                TestSecFrame testSecFrame = new TestSecFrame(columnIndex, enteredValue);
+//                testSecFrame.setVisible(true);
+                SearchController.matchesHomeProperty(columnIndex,enteredValue);
             }
         });
     }

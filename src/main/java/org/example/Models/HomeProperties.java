@@ -1,15 +1,15 @@
-package org.example;
+package org.example.Models;
 
-import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
+import org.example.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HomeProperties {
 
-    static List<HomeProperty> properties=new ArrayList<>();
+    public static List<HomeProperty> properties=new ArrayList<>();
     static private Sheet sheet;
 
     public static void load() {

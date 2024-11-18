@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Models;
 
 public class HomeProperty {
     private String theOwner;

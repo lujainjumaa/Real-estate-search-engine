@@ -1,10 +1,12 @@
-package org.example;
+package org.example.Frames;
+
+import org.example.Models.HomeProperty;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class ShowProperty extends JFrame {
-    public ShowProperty(HomeProperty property){
+public class PropertyDetailsFrame extends JFrame {
+    public PropertyDetailsFrame(HomeProperty property){
         JFrame moreInfo=new JFrame("More Info");
         moreInfo.setSize(500, 500);
         moreInfo.setVisible(true);
