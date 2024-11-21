@@ -1,27 +1,30 @@
 package org.example.Frames;
 
+import org.example.Controller.SearchController;
+import org.example.Models.HomeProperty;
+import org.example.Models.HomePropertyPanel;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TestSecFrame extends JFrame {
     int indexkey;
     String value;
+    List<HomeProperty> matches=new ArrayList<>();
     public TestSecFrame(int key, String value) {
 
         this.indexkey=key;
         this.value=value;
-//        HomeProperties.load();
-//        for (int i=0;i<HomeProperties.properties.size();i++){
-//            if(HomeProperties.properties.get(i).senKeyString(key).equals(value)){
-//                System.out.println(HomeProperties.properties.get(i).senKeyString(key));
-//            }
-//        }
         setTitle("Result Frame");
-        setSize(300, 150);
+        setSize(500, 500);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new FlowLayout());
-
-        JLabel resultLabel = new JLabel("Key: " + key + ", Value: " + value);
-        add(resultLabel);
+        matches=SearchController.matchesHomeProperty(key,value);
+        for (HomeProperty match : matches) {
+            HomePropertyPanel propertyPanel = new HomePropertyPanel(match);
+            add(propertyPanel.getShowProperty());
+        }
     }
 }

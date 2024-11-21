@@ -1,7 +1,6 @@
 package org.example.Controller;
 import org.example.Models.HomeProperties;
 import org.example.Models.HomeProperty;
-import org.example.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
