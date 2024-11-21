@@ -10,7 +10,7 @@ public class SearchController {
     static List<HomeProperty> matches=new ArrayList<>();
 
     public static List<HomeProperty> matchesHomeProperty(int key,String value){
-
+        matches.clear();
         for (int i=0;i<HomeProperties.properties.size();i++){
             switch (key){
             case 0:
