@@ -1,7 +1,8 @@
 package org.example.Frames;
 
 import org.example.Models.ExcelFile;
-import org.example.SearchController;
+import org.example.Controller.SearchController;
+import org.example.Models.HomeProperties;
 
 import javax.swing.*;
 import java.awt.*;
@@ -32,7 +33,7 @@ public class SearchFrame extends JFrame {
 
         searchButton = new JButton("Search");
         add(searchButton);
-
+        HomeProperties.load();
         searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -45,9 +46,9 @@ public class SearchFrame extends JFrame {
                         break;
                     }
                 }
-//                TestSecFrame testSecFrame = new TestSecFrame(columnIndex, enteredValue);
-//                testSecFrame.setVisible(true);
-                SearchController.matchesHomeProperty(columnIndex,enteredValue);
+                TestSecFrame testSecFrame = new TestSecFrame(columnIndex, enteredValue);
+                testSecFrame.setVisible(true);
+                System.out.println(SearchController.matchesHomeProperty(columnIndex,enteredValue));
             }
         });
     }

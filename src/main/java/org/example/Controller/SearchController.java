@@ -1,7 +1,7 @@
-package org.example;
-
+package org.example.Controller;
 import org.example.Models.HomeProperties;
 import org.example.Models.HomeProperty;
+import org.example.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,26 +11,51 @@ public class SearchController {
     static List<HomeProperty> matches=new ArrayList<>();
 
     public static List<HomeProperty> matchesHomeProperty(int key,String value){
-        HomeProperties.load();
-        for (int i=0;i<HomeProperties.properties.size();i++){
-            if(HomeProperties.properties.get(i).senKeyString(key).equals(value)){
-                matches.add(HomeProperties.properties.get(i));
-                System.out.println(HomeProperties.properties.get(i).senKeyString(key));
-            }
-        }
-        return matches;
-    }
 
-    public int turnValueInt( String value){
-            return Utils.turnToInt(value);
-    }
-    public Long turnValueLong(String value){
-        return Utils.turnToLong(value);
-    }
-    public void turnValue(String value,int key){
-        if(key==5)
-            turnValueLong(value);
-        else if (key==0 || key==3 || key==6)
-            turnValueInt(value);
+        for (int i=0;i<HomeProperties.properties.size();i++){
+            switch (key){
+            case 0:
+                if(String.valueOf(HomeProperties.properties.get(i).getId()).equals(value)) {
+                    matches.add(HomeProperties.properties.get(i));
+                }
+                break;
+            case 1:
+                if(HomeProperties.properties.get(i).getTheOwner().equals(value)) {
+                    matches.add(HomeProperties.properties.get(i));
+                }
+                break;
+            case 2:
+                if(String.valueOf(HomeProperties.properties.get(i).getGovernorate()).equals(value)) {
+                    matches.add(HomeProperties.properties.get(i));
+                }
+                break;
+            case 3:
+                if(String.valueOf(HomeProperties.properties.get(i).getPropertyArea()).equals(value)){
+                    matches.add(HomeProperties.properties.get(i));
+                }
+                break;
+            case 4:
+                if(String.valueOf(HomeProperties.properties.get(i).getMoreInfo()).equals(value)){
+                    matches.add(HomeProperties.properties.get(i));
+                }
+                break;
+            case 5:
+                if(String.valueOf(HomeProperties.properties.get(i).getPrice()).equals(value)){
+                    matches.add(HomeProperties.properties.get(i));
+                }
+                break;
+            case 6:
+                if(String.valueOf(HomeProperties.properties.get(i).getRealEstateYield()).equals(value)){
+                    matches.add(HomeProperties.properties.get(i));
+                }
+                break;
+            case 7:
+                if(String.valueOf(HomeProperties.properties.get(i).getRealStateArea()).equals(value)){
+                    matches.add(HomeProperties.properties.get(i));
+                }
+        }
+        }
+
+        return matches;
     }
 }
