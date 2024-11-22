@@ -1,6 +1,5 @@
 package org.example.Models;
 
-import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.example.Utils;
 
@@ -13,8 +12,8 @@ public class HomeProperties {
     static private Sheet sheet;
 
     public static void load() {
-        ExcelFile getsheet=new ExcelFile("Data.xlsx");
-        sheet=getsheet.open("Data.xlsx");
+        ExcelFile getsheet=new ExcelFile("TestData.xlsx");
+        sheet=getsheet.open("TestData.xlsx");
         for (int rowIndex = 1; rowIndex <= sheet.getLastRowNum(); rowIndex++) {
 
             String theOwner = getsheet.getRowAsStrings(rowIndex).get(1);

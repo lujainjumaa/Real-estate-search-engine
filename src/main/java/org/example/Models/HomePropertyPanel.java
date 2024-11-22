@@ -1,33 +1,31 @@
 package org.example.Models;
 
+import org.example.Frames.PropertyDetailsFrame;
+import org.example.Utils;
+
 import javax.swing.*;
 import java.awt.*;
 
+
 public class HomePropertyPanel {
+    public JPanel rowPanel;
+    public HomePropertyPanel(HomeProperty match){
+        rowPanel=Utils.createRowPanel(false);
+        rowPanel.add(Utils.createFixedLabel(String.valueOf(match.getId()), false));
+        rowPanel.add(Utils.createFixedLabel(match.getTheOwner(), false));
+        rowPanel.add(Utils.createFixedLabel(match.getGovernorate(), false));
+        rowPanel.add(Utils.createFixedLabel(String.valueOf(match.getPrice()), false));
+        rowPanel.add(Utils.createFixedLabel(String.valueOf(match.getPropertyArea()), false));
 
-    private JPanel ShowProperty;
 
-    public HomePropertyPanel(HomeProperty HomeProperty){
-        ShowProperty =new JPanel();
-        ShowProperty.setLayout(new GridLayout(0, 2, 10, 10));
-        ShowProperty.add(new JLabel("Owner"));
-        ShowProperty.add(new JLabel(HomeProperty.getTheOwner()));
-        ShowProperty.add(new JLabel("Governorate"));
-        ShowProperty.add(new JLabel(HomeProperty.getGovernorate()));
-        ShowProperty.add(new JLabel("more info"));
-        ShowProperty.add(new JLabel(HomeProperty.getMoreInfo()));
-        ShowProperty.add(new JLabel("real state"));
-        ShowProperty.add(new JLabel(HomeProperty.getRealStateArea()));
-        ShowProperty.add(new JLabel("getRealStateArea"));
-        ShowProperty.add(new JLabel(HomeProperty.getRealStateArea()));
-        ShowProperty.add(new JLabel("Real State Area"));
-        ShowProperty.add(new JLabel(String.valueOf(HomeProperty.getRealStateArea())));
-        ShowProperty.add(new JLabel("A"));
-        ShowProperty.add(new JLabel(String.valueOf(HomeProperty.getRealEstateYield())));
-        ShowProperty.add(new JLabel("Price"));
-        ShowProperty.add(new JLabel(String.valueOf(HomeProperty.getPrice())));
+        JButton detailsButton = new JButton("معلومات إضافية");
+        detailsButton.setPreferredSize(new Dimension(200, 40));
+        detailsButton.addActionListener(e -> new PropertyDetailsFrame(match));
+        rowPanel.add(detailsButton);
+
     }
     public JPanel getShowProperty(){
-        return ShowProperty;
+        return rowPanel;
     }
+
 }

@@ -10,42 +10,66 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestSecFrame extends JFrame {
-    int indexkey;
+public class ResultFrame extends JFrame {
+    int indexKey;
     String value;
     List<HomeProperty> matches = new ArrayList<>();
 
-    public TestSecFrame(int key, String value) {
-        this.indexkey = key;
+    public ResultFrame(int key, String value) {
+        this.indexKey = key;
         this.value = value;
-        value=Utils.removeInvisibleCharacters(value);
-        setTitle("Result Frame");
-        setSize(600, 800);
+        value= Utils.removeInvisibleCharacters(value);
+        setTitle("Properties");
+        setSize(1280, 720);
+        setResizable(false);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-        // Create a panel to hold all HomePropertyPanel components
-        JPanel contentPanel = new JPanel();
-        contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS)); // Vertical layout
+        JPanel mainPanel = new JPanel(new BorderLayout());
 
-        // Get matching properties
+        JPanel topPanel = new JPanel();
+        topPanel.setPreferredSize(new Dimension(1280, 50));
+        topPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+
+        JLabel title = new JLabel("Properties");
+        title.setFont(new Font("Arial", Font.BOLD, 20));
+        topPanel.add(title);
+
+        JPanel contentPanel = new JPanel();
+        contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
+
+        JPanel headerPanel =Utils.createRowPanel(true);
+        headerPanel.add(Utils.createFixedLabel("رقم العقار", true));
+        headerPanel.add(Utils.createFixedLabel("المالك", true));
+        headerPanel.add(Utils.createFixedLabel("المحافظة", true));
+        headerPanel.add(Utils.createFixedLabel("السعر الرائج", true));
+        headerPanel.add(Utils.createFixedLabel("المساحة", true));
+        headerPanel.add(Utils.createFixedLabel("خيارات", true));
+        contentPanel.add(headerPanel);
+
         matches = SearchController.matchesHomeProperty(key, value);
 
-        // Add each HomePropertyPanel to the content panel
-        for (HomeProperty match : matches) {
-            HomePropertyPanel propertyPanel = new HomePropertyPanel(match);
-            contentPanel.add(propertyPanel.getShowProperty());
-//            contentPanel.add(Box.createVerticalStrut(10)); // Add spacing between panels
+        if (matches.isEmpty()) {
+            JLabel noResultsLabel = new JLabel("No results found.", JLabel.CENTER);
+            noResultsLabel.setFont(new Font("Arial", Font.ITALIC, 14));
+            contentPanel.add(noResultsLabel);
+        } else {
+            for (HomeProperty match : matches) {
+                HomePropertyPanel A=new HomePropertyPanel(match);
+
+                contentPanel.add(A.getShowProperty());
+            }
         }
 
-        // Wrap the content panel in a JScrollPane
         JScrollPane scrollPane = new JScrollPane(contentPanel);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
-        // Add the JScrollPane to the frame
-        add(scrollPane);
+        mainPanel.add(topPanel, BorderLayout.NORTH);
+        mainPanel.add(scrollPane, BorderLayout.CENTER);
 
-        // Make the frame visible
+        add(mainPanel);
+
         setVisible(true);
     }
+
 }

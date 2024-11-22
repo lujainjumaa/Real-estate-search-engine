@@ -1,6 +1,5 @@
 package org.example;
 
-
 import org.example.Frames.SearchFrame;
 
 public class Main {

@@ -15,10 +15,10 @@ public class SearchFrame extends JFrame {
     private JButton searchButton;
 
     public SearchFrame() {
-        ExcelFile file=new ExcelFile("Data.xlsx");
+        ExcelFile file=new ExcelFile("TestData.xlsx");
 
         setTitle("Search Frame");
-        setSize(500, 500);
+        setSize(300, 200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new FlowLayout());
 
@@ -46,7 +46,7 @@ public class SearchFrame extends JFrame {
                         break;
                     }
                 }
-                TestSecFrame testSecFrame = new TestSecFrame(columnIndex, enteredValue);
+                ResultFrame testSecFrame = new ResultFrame(columnIndex, enteredValue);
                 testSecFrame.setVisible(true);
                 System.out.println(SearchController.matchesHomeProperty(columnIndex,enteredValue));
             }

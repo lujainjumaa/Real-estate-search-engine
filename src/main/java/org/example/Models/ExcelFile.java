@@ -5,6 +5,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.example.Utils;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -70,15 +71,11 @@ public class ExcelFile {
         return row.getCell(columnIndex);
     }
 
-    public String removeInvisibleCharacters(String input) {
-        return input.replaceAll("[\\p{C}\\p{Z}\\u00A0\\u200E\\u200F\\u202A\\u202B\\u202C\\u202D\\u202E\\uFEFF]", "").trim();
-    }
-
     public List<String> getRowAsStrings(int index) {
         List<String> rowValuesAsString = new ArrayList<>();
         Row row = sheet.getRow(index);
         for (Cell cell : row) {
-            String out = removeInvisibleCharacters(cell.toString());
+            String out = Utils.removeInvisibleCharacters(cell.toString());
             rowValuesAsString.add(out);
         }
         return rowValuesAsString;

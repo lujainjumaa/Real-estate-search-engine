@@ -6,29 +6,58 @@ import javax.swing.*;
 import java.awt.*;
 
 public class PropertyDetailsFrame extends JFrame {
-    public PropertyDetailsFrame(HomeProperty property){
-        JFrame moreInfo=new JFrame("More Info");
-        moreInfo.setSize(500, 500);
+    public JPanel ShowProperty;
+
+    public PropertyDetailsFrame(HomeProperty property) {
+        JFrame moreInfo = new JFrame("More Info");
+        moreInfo.setSize(800, 500);
+        moreInfo.setLayout(null);
         moreInfo.setVisible(true);
-        moreInfo.setLayout(new FlowLayout());
-        JPanel ShowProperty =new JPanel();
-        ShowProperty.setLayout(new GridLayout(0, 2, 10, 10));
-        ShowProperty.add(new JLabel("Owner"));
-        ShowProperty.add(new JLabel(property.getTheOwner()));
-        ShowProperty.add(new JLabel("Governorate"));
-        ShowProperty.add(new JLabel(property.getGovernorate()));
-        ShowProperty.add(new JLabel("more info"));
-        ShowProperty.add(new JLabel(property.getMoreInfo()));
-        ShowProperty.add(new JLabel("real state"));
-        ShowProperty.add(new JLabel(property.getRealStateArea()));
-        ShowProperty.add(new JLabel("getRealStateArea"));
-        ShowProperty.add(new JLabel(property.getRealStateArea()));
-        ShowProperty.add(new JLabel("Real State Area"));
-        ShowProperty.add(new JLabel(String.valueOf(property.getRealStateArea())));
-        ShowProperty.add(new JLabel("A"));
-        ShowProperty.add(new JLabel(String.valueOf(property.getRealEstateYield())));
-        ShowProperty.add(new JLabel("Price"));
-        ShowProperty.add(new JLabel(String.valueOf(property.getPrice())));
+
+        ShowProperty = new JPanel();
+        ShowProperty.setLayout(null);
+        ShowProperty.setBounds(20, 20, 760, 440);
+        ShowProperty.setBackground(Color.LIGHT_GRAY);
+
+        int y = 10;
+        int rowHeight = 40;
+        int labelWidth = 200;
+        int valueWidth = 500;
+
+        ShowProperty.add(createRow(String.valueOf(property.getId()), "رقم العقار:", y, labelWidth, valueWidth, rowHeight));
+        y += rowHeight + 10;
+        ShowProperty.add(createRow(property.getTheOwner(), "المالك:", y, labelWidth, valueWidth, rowHeight));
+        y += rowHeight + 10;
+        ShowProperty.add(createRow(property.getGovernorate(), "المحافظة:", y, labelWidth, valueWidth, rowHeight));
+        y += rowHeight + 10;
+        ShowProperty.add(createRow(String.valueOf(property.getPrice()), "السعر:", y, labelWidth, valueWidth, rowHeight));
+        y += rowHeight + 10;
+        ShowProperty.add(createRow(String.valueOf(property.getPropertyArea()), "المساحة:", y, labelWidth, valueWidth, rowHeight));
+        y += rowHeight + 10;
+        ShowProperty.add(createRow(String.valueOf(property.getMoreInfo()), "ملاحظات:", y, labelWidth, valueWidth, rowHeight));
+        y += rowHeight + 10;
+        ShowProperty.add(createRow(String.valueOf(property.getRealStateArea()), "المنطقة:", y, labelWidth, valueWidth, rowHeight));
+        y += rowHeight + 10;
+        ShowProperty.add(createRow(String.valueOf(property.getRealEstateYield()), "العائدية:", y, labelWidth, valueWidth, rowHeight));
         moreInfo.add(ShowProperty);
+    }
+
+    private JPanel createRow(String valueText, String labelText, int y, int labelWidth, int valueWidth, int rowHeight) {
+        JPanel rowPanel = new JPanel();
+        rowPanel.setLayout(null);
+        rowPanel.setBounds(0, y, labelWidth + valueWidth + 20, rowHeight);
+
+        JLabel value = new JLabel(valueText);
+        value.setBounds(10, 0, valueWidth, rowHeight);
+        value.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JLabel label = new JLabel(labelText);
+        label.setBounds(valueWidth + 20, 0, labelWidth, rowHeight);
+        label.setHorizontalAlignment(SwingConstants.RIGHT);
+
+        rowPanel.add(value);
+        rowPanel.add(label);
+
+        return rowPanel;
     }
 }
