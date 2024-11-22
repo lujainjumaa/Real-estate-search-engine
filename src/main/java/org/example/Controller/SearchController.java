@@ -9,49 +9,50 @@ public class SearchController {
 
     static List<HomeProperty> matches=new ArrayList<>();
 
-    public static List<HomeProperty> matchesHomeProperty(int key,String value){
+    public static List<HomeProperty> matchesHomeProperty(String key,String value){
         matches.clear();
         for (int i=0;i<HomeProperties.properties.size();i++){
             switch (key){
-            case 0:
+            case "رقم العقار":
                 if(String.valueOf(HomeProperties.properties.get(i).getId()).equals(value)) {
                     matches.add(HomeProperties.properties.get(i));
                 }
                 break;
-            case 1:
+            case "اسم المالك":
                 if(HomeProperties.properties.get(i).getTheOwner().equals(value)) {
                     matches.add(HomeProperties.properties.get(i));
                 }
                 break;
-            case 2:
+            case "المحافظة":
                 if(String.valueOf(HomeProperties.properties.get(i).getGovernorate()).equals(value)) {
                     matches.add(HomeProperties.properties.get(i));
                 }
                 break;
-            case 3:
+            case "المساحة":
                 if(String.valueOf(HomeProperties.properties.get(i).getPropertyArea()).equals(value)){
                     matches.add(HomeProperties.properties.get(i));
                 }
                 break;
-            case 4:
+            case "الملاحظات":
                 if(String.valueOf(HomeProperties.properties.get(i).getMoreInfo()).equals(value)){
                     matches.add(HomeProperties.properties.get(i));
                 }
                 break;
-            case 5:
+            case "السعر الرائج":
                 if(String.valueOf(HomeProperties.properties.get(i).getPrice()).equals(value)){
                     matches.add(HomeProperties.properties.get(i));
                 }
                 break;
-            case 6:
+            case "العائدة":
                 if(String.valueOf(HomeProperties.properties.get(i).getRealEstateYield()).equals(value)){
                     matches.add(HomeProperties.properties.get(i));
                 }
                 break;
-            case 7:
+            case "المنطقة":
                 if(String.valueOf(HomeProperties.properties.get(i).getRealStateArea()).equals(value)){
                     matches.add(HomeProperties.properties.get(i));
                 }
+                break;
         }
         }
 

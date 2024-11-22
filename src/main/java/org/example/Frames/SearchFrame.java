@@ -37,18 +37,11 @@ public class SearchFrame extends JFrame {
         searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int columnIndex = 0;
                 String selectedKey = (String) keyDropdown.getSelectedItem();
                 String enteredValue = valueTextField.getText();
-                for (int i = 0; i < keys.length; i++) {
-                    if (keys[i].equals(selectedKey)) {
-                        columnIndex = i; 
-                        break;
-                    }
-                }
-                ResultFrame testSecFrame = new ResultFrame(columnIndex, enteredValue);
+                ResultFrame testSecFrame = new ResultFrame(selectedKey, enteredValue);
                 testSecFrame.setVisible(true);
-                System.out.println(SearchController.matchesHomeProperty(columnIndex,enteredValue));
+                System.out.println(SearchController.matchesHomeProperty(selectedKey,enteredValue));
             }
         });
     }

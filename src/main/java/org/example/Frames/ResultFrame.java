@@ -11,12 +11,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ResultFrame extends JFrame {
-    int indexKey;
+    String key;
     String value;
     List<HomeProperty> matches = new ArrayList<>();
 
-    public ResultFrame(int key, String value) {
-        this.indexKey = key;
+    public ResultFrame(String key, String value) {
+        this.key = key;
         this.value = value;
         value= Utils.removeInvisibleCharacters(value);
         setTitle("Properties");

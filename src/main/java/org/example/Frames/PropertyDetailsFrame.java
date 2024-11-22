@@ -32,7 +32,7 @@ public class PropertyDetailsFrame extends JFrame {
         y += rowHeight + 10;
         ShowProperty.add(createRow(String.valueOf(property.getPrice()), "السعر:", y, labelWidth, valueWidth, rowHeight));
         y += rowHeight + 10;
-        ShowProperty.add(createRow(String.valueOf(property.getPropertyArea()), "المساحة:", y, labelWidth, valueWidth, rowHeight));
+        ShowProperty.add(createRow(String.valueOf(property.getPropertyArea()+"m²"), "المساحة:", y, labelWidth, valueWidth, rowHeight));
         y += rowHeight + 10;
         ShowProperty.add(createRow(String.valueOf(property.getMoreInfo()), "ملاحظات:", y, labelWidth, valueWidth, rowHeight));
         y += rowHeight + 10;
