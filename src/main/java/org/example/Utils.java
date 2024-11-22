@@ -18,7 +18,7 @@ public class Utils {
         return intValue;
     }
     static public String removeInvisibleCharacters(String input) {
-        return input.replaceAll("[\\p{C}\\p{Z}\\u00A0\\u200E\\u200F\\u202A\\u202B\\u202C\\u202D\\u202E\\uFEFF]", "").trim();
+        return input.replaceAll("[\\u00A0\\u200E\\u200F\\u202A\\u202B\\u202C\\u202D\\u202E\\uFEFF]", "").trim();
     }
 
     public static JLabel createFixedLabel(String text, boolean isHeader) {
