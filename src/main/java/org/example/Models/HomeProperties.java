@@ -17,13 +17,13 @@ public class HomeProperties {
         for (int rowIndex = 1; rowIndex <= sheet.getLastRowNum(); rowIndex++) {
 
             String theOwner = getsheet.getRowAsStrings(rowIndex).get(1);
-            int id =  Utils.turnToInt(getsheet.getRowAsStrings(rowIndex).get(0));
+            String id = String.valueOf((getsheet.getRowAsStrings(rowIndex).get(0)).replaceAll("\\.0$", ""));
             String moreInfo = getsheet.getRowAsStrings(rowIndex).get(4);
             String governorate = getsheet.getRowAsStrings(rowIndex).get(2);
             long price = Utils.turnToLong(getsheet.getRowAsStrings(rowIndex).get(5));
             int propertyArea =Utils.turnToInt(getsheet.getRowAsStrings(rowIndex).get(3));
             String realStateArea = getsheet.getRowAsStrings(rowIndex).get(7);
-            int RealEstateYield = Utils.turnToInt(getsheet.getRowAsStrings(rowIndex).get(6));
+            String RealEstateYield = getsheet.getRowAsStrings(rowIndex).get(6);
 
             HomeProperty property = new HomeProperty(theOwner, id, moreInfo, governorate, price, propertyArea, realStateArea, RealEstateYield);
             properties.add(property);

@@ -14,42 +14,42 @@ public class SearchController {
         for (int i=0;i<HomeProperties.properties.size();i++){
             switch (key){
             case "رقم العقار":
-                if(String.valueOf(HomeProperties.properties.get(i).getId()).equals(value)) {
+                if(HomeProperties.properties.get(i).getId().replace("\n", " ").contains(value)) {
                     matches.add(HomeProperties.properties.get(i));
                 }
                 break;
             case "اسم المالك":
-                if(HomeProperties.properties.get(i).getTheOwner().equals(value)) {
+                if(HomeProperties.properties.get(i).getTheOwner().replace("\n", " ").contains(value)) {
                     matches.add(HomeProperties.properties.get(i));
                 }
                 break;
             case "المحافظة":
-                if(String.valueOf(HomeProperties.properties.get(i).getGovernorate()).equals(value)) {
+                if(HomeProperties.properties.get(i).getGovernorate().replace("\n", " ").equals(value)) {
                     matches.add(HomeProperties.properties.get(i));
                 }
                 break;
             case "المساحة":
-                if(String.valueOf(HomeProperties.properties.get(i).getPropertyArea()).equals(value)){
+                if(String.valueOf(HomeProperties.properties.get(i).getPropertyArea()).replace("\n", " ").equals(value)){
                     matches.add(HomeProperties.properties.get(i));
                 }
                 break;
             case "الملاحظات":
-                if(String.valueOf(HomeProperties.properties.get(i).getMoreInfo()).equals(value)){
+                if(HomeProperties.properties.get(i).getMoreInfo().replace("\n", " ").contains(value)){
                     matches.add(HomeProperties.properties.get(i));
                 }
                 break;
             case "السعر الرائج":
-                if(String.valueOf(HomeProperties.properties.get(i).getPrice()).equals(value)){
+                if(String.valueOf(HomeProperties.properties.get(i).getPrice()).replace("\n", " ").equals(value)){
                     matches.add(HomeProperties.properties.get(i));
                 }
                 break;
             case "العائدة":
-                if(String.valueOf(HomeProperties.properties.get(i).getRealEstateYield()).equals(value)){
+                if(String.valueOf(HomeProperties.properties.get(i).getRealEstateYield()).replace("\n", " ").contains(value)){
                     matches.add(HomeProperties.properties.get(i));
                 }
                 break;
             case "المنطقة":
-                if(String.valueOf(HomeProperties.properties.get(i).getRealStateArea()).equals(value)){
+                if(HomeProperties.properties.get(i).getRealStateArea().replace("\n", " ").contains(value)){
                     matches.add(HomeProperties.properties.get(i));
                 }
                 break;

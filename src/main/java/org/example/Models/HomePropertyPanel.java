@@ -15,7 +15,7 @@ public class HomePropertyPanel {
         rowPanel.add(Utils.createFixedLabel(match.getTheOwner(), false));
         rowPanel.add(Utils.createFixedLabel(match.getGovernorate(), false));
         rowPanel.add(Utils.createFixedLabel(String.valueOf(match.getPrice()), false));
-        rowPanel.add(Utils.createFixedLabel(String.valueOf(match.getPropertyArea()+"m²"), false));
+        rowPanel.add(Utils.createFixedLabel(String.valueOf(match.getRealStateArea()), false));
 
 
         JButton detailsButton = new JButton("معلومات إضافية");

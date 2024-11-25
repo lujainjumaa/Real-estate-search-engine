@@ -42,7 +42,7 @@ public class ResultFrame extends JFrame {
         headerPanel.add(Utils.createFixedLabel("المالك", true));
         headerPanel.add(Utils.createFixedLabel("المحافظة", true));
         headerPanel.add(Utils.createFixedLabel("السعر الرائج", true));
-        headerPanel.add(Utils.createFixedLabel("المساحة", true));
+        headerPanel.add(Utils.createFixedLabel("المنطقة", true));
         headerPanel.add(Utils.createFixedLabel("خيارات", true));
         contentPanel.add(headerPanel);
 

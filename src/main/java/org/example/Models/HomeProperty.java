@@ -2,15 +2,15 @@ package org.example.Models;
 
 public class HomeProperty {
     private String theOwner;
-    private int id;
+    private String id;
     private String moreInfo;
     private long price;
     private String governorate;
     private int propertyArea;
     private String realStateArea;
-    private int RealEstateYield;
+    private String RealEstateYield;
 
-    public HomeProperty(String theOwner, int id, String moreInfo, String governorate, long price, int propertyArea, String realStateArea, int realEstateYield) {
+    public HomeProperty(String theOwner, String id, String moreInfo, String governorate, long price, int propertyArea, String realStateArea, String realEstateYield) {
         this.theOwner = theOwner;
         this.id = id;
         this.moreInfo = moreInfo;
@@ -27,7 +27,7 @@ public class HomeProperty {
     }
 
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -55,7 +55,7 @@ public class HomeProperty {
         return realStateArea;
     }
 
-    public int getRealEstateYield() {
+    public String getRealEstateYield() {
         return RealEstateYield;
     }
 
