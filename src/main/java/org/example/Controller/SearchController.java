@@ -43,8 +43,8 @@ public class SearchController {
                     matches.add(HomeProperties.properties.get(i));
                 }
                 break;
-            case "العائدة":
-                if(String.valueOf(HomeProperties.properties.get(i).getRealEstateYield()).replace("\n", " ").contains(value)){
+            case "العائدية":
+                if(HomeProperties.properties.get(i).getRealEstateYield().replace("\n", " ").contains(value)){
                     matches.add(HomeProperties.properties.get(i));
                 }
                 break;
